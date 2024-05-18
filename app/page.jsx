@@ -11,7 +11,7 @@ export default function Page() {
 
   const getPosts = async () => {
     try{
-        const res = await fetch("http://localhost:3000/api/series", {
+        const res = await fetch("https://cpe499-back-end.onrender.com/api/series", {
             cache: "no-store"
         })
 
