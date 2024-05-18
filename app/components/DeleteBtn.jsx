@@ -7,7 +7,7 @@ function DeleteBtn({ id }) {
     const confirmed = confirm("Are you sure?");
 
     if (confirmed) {
-      const res = await fetch(`http://localhost:3000/api/series/${id}`, {
+      const res = await fetch(`https://cpe499-back-end.onrender.com/api/series/${id}`, {
         method: "DELETE"
       })
 
