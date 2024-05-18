@@ -18,7 +18,7 @@ function EditPostPage({ params }) {
 
   const getPostById = async (id) => {
     try{
-        const res = await fetch(`http://localhost:3000/api/series/${id}`,{
+        const res = await fetch(`https://cpe499-back-end.onrender.com/api/series/${id}`,{
             method: "GET",
             cache: 'no-store'
         })
