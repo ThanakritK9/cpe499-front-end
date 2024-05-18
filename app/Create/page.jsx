@@ -19,7 +19,7 @@ function CreatePostPage() {
         }
 
         try {
-            const res = await fetch("http://localhost:3000/api/series", {
+            const res = await fetch("https://cpe499-back-end.onrender.com/api/series", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
