@@ -7,12 +7,9 @@ function EditPostPage({ params }) {
 
   const { id } = params;
 
-  const [postData, setPostData] = useState("");
-
-  //New Data of Series
-  const [newName, setNewName] = useState("");
-  const [newSeries, setNewSeries] = useState("");
-  const [newPicture, setNewPicture] = useState("");
+  const [name, setName] = useState("");
+  const [series, setSeries] = useState("");
+  const [picture, setPicture] = useState("");
 
   const router = useRouter();
 
@@ -29,7 +26,10 @@ function EditPostPage({ params }) {
 
         const data = await res.json();
         console.log("edit post", data);
-        setPostData(data);
+        setName(data.name);
+        setSeries(data.series);
+        setPicture(data.picture);
+
 
     } catch(error) {
         console.log(error);
@@ -44,12 +44,12 @@ function EditPostPage({ params }) {
     e.preventDefault();
 
     try {
-        const res = await fetch(`http://localhost:3000/api/series/${id}`, {
+        const res = await fetch(`https://cpe499-back-end.onrender.com/api/series/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ newName, newSeries, newPicture })
+            body: JSON.stringify({ name, series, picture })
         })
 
         if (!res.ok) {
@@ -79,34 +79,34 @@ function EditPostPage({ params }) {
                 <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center">
                     <div>
                         <input
-                            onChange={(e) => setNewName(e.target.value)}
+                            onChange={(e) => setName(e.target.value)}
                             type='text'
-                            placeholder={postData.name}
+                            placeholder={name}
                             id='name'
                             name='name'
-                            value={postData.name}
+                            value={name}
                             className="w-[640px] max-lg:w-[270px] block bg-gray-200 border py-1 rounded text-lg my-2 text-center drop-shadow-md"
                         />
                     </div>
                     <div>
                         <input
-                            onChange={(e) => setNewSeries(e.target.value)}
+                            onChange={(e) => setSeries(e.target.value)}
                             type='text'
-                            placeholder={"Series : " + postData.series}
+                            placeholder={"Series : " + series}
                             id='series'
                             name='series'
-                            value={postData.series}
+                            value={series}
                             className="w-[640px] max-lg:w-[270px] block bg-gray-200 border py-1 rounded text-lg my-2 text-center drop-shadow-md"
                         />
                     </div>
                     <div>
                         <input
-                            onChange={(e) => setNewPicture(e.target.value)}
+                            onChange={(e) => setPicture(e.target.value)}
                             type='text'
-                            placeholder={postData.picture}
+                            placeholder={picture}
                             id='picture'
                             name='picture'
-                            value={postData.picture}
+                            value={picture}
                             className="w-[640px] max-lg:w-[270px] block bg-gray-200 border py-1 rounded text-lg my-2 text-center drop-shadow-md"
                         />
                     </div>
